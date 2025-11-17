@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>WB Students Group IYR | West Bengal Students Support</title>
+<meta name="description" content="Join WB Students Group IYR – A learning and support community for West Bengal students. Get syllabus, notes, question papers, and exam updates.">
+<meta name="keywords" content="WB Students Group, IYR, West Bengal Students, IYR Group, WB Class 11, WB Class 12, WB Board, WBBSE, WBCHSE, Yusuf Khan, Indian Youth Revolution">
+  <meta name="google-site-verification" content="QdWp6KclUO3WdEfBuTkQhXAhnqjiTWrIhc3XT16dT9E" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>WB Student Group | IYR — Full</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#0a74da;
+    --deep:#041731;
+    --accent:#ffcc00;
+    --accent-2:#ffd36b;
+    --bg:#071126;
+    --glass: rgba(255,255,255,0.04);
+    --muted: rgba(230,238,248,0.78);
+    --ui-radius:12px;
+    --ease: cubic-bezier(.2,.9,.3,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    background:linear-gradient(180deg,#041731 0%, #071126 60%);
+    color:#e6eef8;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  }
+  .wrap{max-width:1100px;margin:14px auto;padding:14px;}
+
+  /* TOP NOTICE (will be injected right after <body>) */
+  .top-notice {
+    position: fixed;
+    top: 10px;
+    left: 12px;
+    right: 12px;
+    z-index: 99999;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(2,8,30,0.6);
+    border: 1px solid rgba(255,255,255,0.06);
+    background: linear-gradient(90deg, rgba(255,204,0,0.98), rgba(255,185,0,0.95));
+    color: #071126;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    padding:8px 10px;
+    gap:10px;
+  }
+  .top-notice .notice-inner { display:flex; align-items:center; gap:12px; width:100%; }
+  .notice-marquee { flex:1 1 auto; overflow:hidden; position:relative; height:28px; }
+  .notice-marquee span{ display:inline-block; white-space:nowrap; padding-right:40px; line-height:28px; }
+  .notice-marquee .track { display:inline-block; position:absolute; left:100%; will-change:transform; animation: marquee 14s linear infinite; }
+  @keyframes marquee { 0%{ transform: translateX(0%);} 100%{ transform: translateX(-100%);} }
+  .notice-wa{ display:inline-flex; align-items:center; gap:8px; background:#071126; color:var(--accent); border-radius:8px; padding:6px 10px; text-decoration:none; font-weight:800; box-shadow:0 8px 18px rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.04); }
+  .notice-close{ background:transparent; border:none; color:#071126; font-weight:900; font-size:18px; cursor:pointer; padding:4px 6px; border-radius:6px; }
+  .top-notice:hover .notice-marquee .track{ animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce){ .notice-marquee .track{ animation:none; left:0; transform:none; } .notice-marquee{ overflow:auto; } }
+
+  /* TOPBAR */
+  .topbar{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:10px;border-radius:12px;background:linear-gradient(90deg, rgba(10,116,218,0.08), rgba(255,204,0,0.02));border:1px solid rgba(255,255,255,0.03)}
+  .brand{display:flex;gap:12px;align-items:center}
+  .brand img{width:56px;height:56px;border-radius:10px;object-fit:cover;border:2px solid rgba(255,255,255,0.06)}
+  .brand .title{font-weight:800;color:var(--accent);font-size:1.02rem}
+  .brand .subtitle{font-size:0.82rem;color:var(--muted)}
+
+  .nav{ display:flex;align-items:center;gap:10px; }
+  .nav a{ color:var(--muted); text-decoration:none; font-weight:700; padding:8px 10px; border-radius:8px; transition: background .18s var(--ease), color .18s, transform .18s; }
+  .nav a:hover, .nav a.active{ background: linear-gradient(90deg, rgba(10,116,218,0.07), rgba(255,204,0,0.03)); color:var(--accent); transform:translateY(-2px); }
+
+  .hamburger{ display:none; width:44px; height:44px; border-radius:10px; align-items:center; justify-content:center; background:transparent; border:1px solid rgba(255,255,255,0.04); cursor:pointer; }
+  .hamburger span{ display:block; width:20px; height:2px; background:#fff; margin:3px 0; transition: transform .22s, opacity .22s; }
+
+  /* Header right */
+  .header-right{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+  .header-right .chip{ background:var(--accent); color:#071126; padding:6px 12px; border-radius:10px; font-weight:800; box-shadow:0 8px 30px rgba(255,204,0,0.06); }
+  .header-right .small{ color:var(--accent-2); font-weight:700; }
+
+  /* STATS */
+  .stats{ display:flex; gap:12px; margin-top:12px; flex-wrap:wrap }
+  .stat-card{ flex:1 1 200px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:12px; text-align:center; border:1px solid rgba(255,255,255,0.03); box-shadow:0 10px 28px rgba(2,8,30,0.45); }
+  .stat-number{ font-size:1.95rem; font-weight:800; color:var(--accent); margin-bottom:6px; letter-spacing:0.6px; }
+  .stat-label{ font-size:0.95rem; color:var(--muted); margin-bottom:6px; }
+
+  /* GRID */
+  .grid{ display:grid; grid-template-columns: 1fr 320px; gap:18px; margin-top:18px; }
+  @media(max-width:980px){ .grid{ grid-template-columns:1fr; } .nav{ display:none } .hamburger{ display:flex } .header-right{ align-items:center } }
+
+  /* CARD */
+  .card{ background: var(--deep); border-radius:12px; padding:12px; border:1px solid rgba(255,255,255,0.03); color:#eaf4ff; box-shadow: 0 12px 34px rgba(2,8,30,0.5); }
+  .card h3{ margin:0 0 8px 0; color:var(--accent); font-size:1.02rem }
+  .muted{ color:var(--muted); font-size:0.9rem }
+
+  /* UPDATES */
+  #updatesList{ max-height:180px; overflow-y:auto; padding-right:6px; margin-top:8px; }
+  .update{ display:flex; gap:10px; padding:10px; border-radius:10px; background: linear-gradient(90deg, rgba(255,255,255,0.006), rgba(255,255,255,0.003)); margin-bottom:10px; align-items:flex-start }
+  .update .time{ width:92px; font-weight:800; color:rgba(200,220,255,0.86) }
+  .update .txt{ color:rgba(230,238,248,0.96) }
+
+  /* BOOKS */
+  .books-card{ padding:12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; }
+  .tabs-inner{ display:flex; gap:8px; position:relative; align-items:flex-end; overflow:auto; padding-bottom:14px; margin-top:6px }
+  .tabBtn{ padding:8px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:var(--muted); font-weight:800; cursor:pointer; white-space:nowrap; transition: transform .22s var(--ease), background .22s, color .22s; }
+  .tabBtn.active{ background: linear-gradient(90deg, rgba(10,116,218,0.95), var(--accent)); color:#071126; transform:translateY(-3px); box-shadow:0 10px 20px rgba(2,8,30,0.28); }
+  .tab-underline{ position:absolute; bottom:4px; left:0; height:6px; width:0; border-radius:6px; background: linear-gradient(90deg,var(--accent),var(--accent-2)); box-shadow:0 8px 18px rgba(255,204,0,0.06); transition: transform .30s var(--ease), width .30s var(--ease); }
+
+  .bookSection{ max-height: calc(3 * 68px + 24px); overflow-y:auto; padding-right:6px; margin-top:12px; }
+  .bookItem{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px; border-radius:10px; margin-bottom:10px; background: linear-gradient(90deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006)); border-left:4px solid rgba(255,255,255,0.03); }
+  .bookIcon{ width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--accent); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); }
+  .open-btn{ background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:#071126; padding:8px 12px; border-radius:10px; font-weight:800; text-decoration:none }
+
+  /* contributors */
+  .contributors-list{ display:flex; flex-direction:column; gap:8px; padding-right:6px; max-height: calc(5 * 64px + 20px); overflow-y:auto; margin-top:8px }
+  .contrib-row{ display:flex; align-items:center; gap:10px; padding:8px; border-radius:8px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005)); }
+  .medal{ width:46px; height:46px; display:flex; align-items:center; justify-content:center; font-weight:900; color:#071126; border-radius:8px; }
+
+  /* subjects small tabs */
+  .subjects{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+  .subject{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:10px; border-radius:8px; min-width:150px; }
+
+  /* SCROLL REVEAL */
+  .scroll-reveal { opacity: 0; transform: translateY(10px); will-change: opacity, transform; }
+  .scroll-reveal.in-view { animation: fadeUp .48s cubic-bezier(.2,.9,.3,1) both; }
+  @keyframes fadeUp { 0%{ opacity: 0; transform: translateY(10px); } 60% { opacity: 1; transform: translateY(-4px);} 100%{ opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce){ .scroll-reveal { transition: none !important; transform:none !important; opacity:1 !important; animation:none !important; } }
+
+  /* small screens */
+  @media(max-width:720px){
+    .brand img{width:48px;height:48px}
+    .tabBtn{ padding:10px 14px; font-size:14px; }
+    .bookItem{ padding:12px; }
+    .bookSection{ max-height: calc(4 * 68px + 24px) }
+    .contributors-list{ max-height: calc(5 * 64px + 20px) }
+    .stat-number{ font-size:1.25rem; }
+    .nav{ display:none }
+    .hamburger{ display:flex }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== TOP NOTICE BAR (copy-pasted here) ====== -->
+<div id="topNotice" class="top-notice" role="region" aria-label="Important notice">
+  <div class="notice-inner">
+    <div class="notice-marquee" aria-hidden="false">
+      <div class="track" id="noticeTrack" aria-hidden="false">
+        <span>Note for joining WhatsApp group — Be our member: Click the WhatsApp icon and DM Yusuf Khan "Join me in Wb students group"</span>
+        <span>Note for joining WhatsApp group — Be our member: Click the WhatsApp icon and DM Yusuf Khan "Join me in Wb students group"</span>
+      </div>
+    </div>
+    <a class="notice-wa" id="noticeWA" href="https://wa.me/9330395465?text=Join%20me%20in%20Wb%20students%20group" target="_blank" rel="noopener noreferrer" aria-label='Message Yusuf on WhatsApp: "Join me in Wb students group"'>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" style="width:18px;height:18px"><path d="M20.52 3.48A11.88 11.88 0 0 0 12.03.12C6.1.12 1.43 4.79 1.43 10.73c0 1.88.49 3.7 1.42 5.33L.12 23.88l7.92-2.09a11.9 11.9 0 0 0 4 0l.02.01 0 0a11.88 11.88 0 0 0 8.44-20.32zM12.03 21.6a9.75 9.75 0 0 1-4.95-1.33l-.35-.2-4.7 1.24 1.24-4.58-.23-.37A9.77 9.77 0 1 1 12.03 21.6zM17.2 14.77c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.13-.61.13-.18.26-.69.88-.85 1.06-.16.18-.31.2-.58.07-.27-.13-1.15-.42-2.19-1.36-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.31.41-.46.14-.15.18-.25.28-.42.09-.18.04-.34-.02-.47-.07-.13-.61-1.48-.84-2.03-.22-.53-.45-.46-.61-.47l-.52-.01c-.18 0-.47.07-.72.34-.24.26-.92.9-.92 2.2 0 1.3.94 2.56 1.07 2.74.12.18 1.86 2.95 4.51 4.02 1.46.6 2.12.67 2.88.57.46-.07 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.18-.52-.31z"/></svg>
+      <span style="font-size:13px">WhatsApp</span>
+    </a>
+    <button class="notice-close" id="noticeClose" aria-label="Close notice">×</button>
+  </div>
+</div>
+<!-- ====== END NOTICE ====== -->
+
+<div class="wrap">
+  <!-- TOPBAR -->
+  <div class="topbar" role="banner" id="home">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="brand">
+        <img src="https://i.ibb.co/3mxmCNDP/wb-logo.jpg" alt="WB logo">
+        <div>
+          <div class="title">WB Students Group</div>
+          <div class="subtitle">Managed by IYR — Urdu · Hindi · English</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#latest" class="nav-link">Latest</a>
+        <a href="#books" class="nav-link">Books</a>
+        <a href="#history" class="nav-link">History</a>
+        <a href="#rules" class="nav-link">Rules</a>
+        <a href="#streams" class="nav-link">Streams</a>
+      </nav>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="header-right" aria-hidden="false">
+        <div class="chip">Founder: <strong>Yusuf Khan</strong></div>
+        <div class="small">Since <strong>09-09-2024</strong></div>
+      </div>
+
+      <button class="hamburger" id="hambBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileNav" style="display:none;margin-top:10px;border-radius:10px;overflow:hidden;">
+    <nav style="background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));padding:8px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);">
+      <a href="#home" class="nav-link mobile">Home</a> |
+      <a href="#latest" class="nav-link mobile">Latest</a> |
+      <a href="#books" class="nav-link mobile">Books</a> |
+      <a href="#history" class="nav-link mobile">History</a> |
+      <a href="#rules" class="nav-link mobile">Rules</a> |
+      <a href="#streams" class="nav-link mobile">Streams</a>
+    </nav>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats" style="margin-top:14px">
+    <div class="stat-card card" aria-hidden="false">
+      <div class="stat-number" id="memCount">0+</div>
+      <div class="stat-label">Active Members</div>
+      <div class="muted">A diverse group of students from all mediums.</div>
+    </div>
+
+    <div class="stat-card card">
+      <div class="stat-number" id="helpCount">0+</div>
+      <div class="stat-label">Students Helped</div>
+      <div class="muted">Notes, guidance, and support since launch.</div>
+    </div>
+
+    <div class="stat-card card">
+      <div class="stat-number" id="resourcesCount">0+</div>
+      <div class="stat-label">Resources (PDFs)</div>
+      <div class="muted">Notes, books, past papers & more.</div>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid" style="margin-top:18px">
+    <main>
+      <!-- Latest -->
+      <section id="latest" class="card" aria-labelledby="latestTitle">
+        <h3 id="latestTitle">Latest Updates</h3>
+        <div class="muted">Updated live</div>
+        <div id="updatesList" style="margin-top:8px"></div>
+      </section>
+
+      <!-- Books -->
+      <section id="books" class="card books-card" aria-labelledby="booksTitle" style="margin-top:18px">
+        <h3 id="booksTitle">OUR BOOKS & FREE MATERIAL</h3>
+        <div class="muted" style="margin-bottom:6px">Updated Live — Free PDFs & Notes</div>
+
+        <div class="tabs-inner" role="tablist" aria-label="Books categories">
+          <button class="tabBtn" data-target="langBooks" role="tab" aria-selected="true">Language</button>
+          <button class="tabBtn" data-target="compBooks" role="tab" aria-selected="false">Compulsory</button>
+          <button class="tabBtn" data-target="specialBooks" role="tab" aria-selected="false">Special</button>
+          <div class="tab-underline" aria-hidden="true"></div>
+        </div>
+
+        <div id="langBooks" class="bookSection" aria-live="polite"></div>
+        <div id="compBooks" class="bookSection" style="display:none" aria-live="polite"></div>
+        <div id="specialBooks" class="bookSection" style="display:none" aria-live="polite"></div>
+      </section>
+
+      <!-- Top Contributors -->
+      <section id="top-contrib" class="card" style="margin-top:18px">
+        <h3>Top Contributors of the Month</h3>
+        <div class="muted">Updated Every Month</div>
+        <div id="contributorsList" class="contributors-list" role="list"></div>
+      </section>
+
+      <!-- History & Rules -->
+      <section style="margin-top:18px">
+        <div class="card" id="history">
+          <h3>History</h3>
+          <p><strong>Founded:</strong> 09-09-2024</p>
+          <p>Yusuf khan founder of Indian youth revolution Founded WB Student Group started to support students of Urdu, Hindi & English mediums. Many students who couldn't afford coaching found free support here help each other.</p>
+        </div>
+
+        <div class="card" id="rules" style="margin-top:12px">
+          <h3>Rules (short)</h3>
+          <ul style="margin:6px 0 0 18px;color:var(--muted)">
+            <li><strong>No PMs:</strong> Report to Admin Yusuf with screenshot.</li>
+            <li><strong>Be respectful:</strong> No insults/bullying.</li>
+            <li><strong>Study only:</strong> No spam, no politics.</li>
+            <li><strong>No promotions:</strong> No external group links or ads.</li>
+            <li><strong>Paid content:</strong> Don't share without permission.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Streams & Subjects -->
+      <section id="streams" class="card" style="margin-top:18px">
+        <h3>Streams & Subjects</h3>
+        <div class="muted">Click a stream to view subjects</div>
+        <div id="tabs" style="margin-top:10px;">
+          <button class="active" data-stream="science">Science</button>
+          <button data-stream="arts">Arts</button>
+          <button data-stream="commerce">Commerce</button>
+        </div>
+        <div class="subjects" id="subjectsArea"></div>
+      </section>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside>
+      <div class="card" style="padding:12px;">
+        <div style="display:flex;gap:12px;align-items:center">
+          <img src="https://i.ibb.co/3mxmCNDP/wb-logo.jpg" alt="logo" style="width:64px;height:64px;border-radius:8px;object-fit:cover">
+          <div>
+            <div style="font-weight:800">WB Student Group</div>
+            <div class="muted">Managed by IYR</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.03)"><div>Members</div><div style="font-weight:800" id="memberCount">500+</div></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.03)"><div>Students helped</div><div style="font-weight:800" id="helpCountSidebar">1000+</div></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0"><div>Available PDFs</div><div style="font-weight:800" id="pdfCount">350+</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px;padding:12px;">
+        <div style="font-weight:700;color:var(--accent);margin-bottom:8px">Quick Links</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="#" style="color:#cfe8ff">Notes (Urdu)</a>
+          <a href="#" style="color:#cfe8ff">Notes (Hindi)</a>
+          <a href="#" style="color:#cfe8ff">Join Telegram</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer style="text-align:center;color:rgba(200,220,255,0.7);font-size:0.9rem;margin-top:14px;padding:10px">© 2025 WB Student Group · Managed by Yusuf Khan</footer>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/9330395465?text=Join%20me%20in%20Wb%20students%20group" target="_blank" rel="noopener" style="position:fixed;right:14px;bottom:14px;background:linear-gradient(90deg,#25D366,#128C7E);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(2,10,30,0.5);">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="whats" style="width:26px;height:26px;">
+</a>
+
+<script>
+/* ====== DATA: Edit here to update site content quickly ======
+   - Replace arrays below with your real links/titles
+   - For production, you can fetch these from data.json or Google Sheets instead
+================================================================= */
+const SITE_DATA = {
+  stats: { members: 500, helped: 1000, resources: 350 },
+  updates: [
+     { date: "2025-11-12", html: `NATIONAL SCHOLARSHIP (NSP) PORTAL IS NOW OPEN 
+<a href="https://scholarships.gov.in/Students " style="color:var(--accent)"> Apply</a>` },
+    { date: "2025-11-11", html: `HS SEM-3 Answer Key 2025-2026 <a href="https://drive.google.com/file/d/1L2Yuu_DnprCtSA960ranuwxPjc1Q4sps/view?usp=sharing" style="color:var(--accent)"> open Now</a>` },
+    { date: "2025-11-09", html: `Class 11th Sem 2 English test 1 <a href="https://indianyouthrevolution.github.io/class-11th-test/" style="color:var(--accent)">Give The Test</a>` },
+    { date: "2025-11-09", html: `Amaan Classes Nov Test Routine <a href="https://i.ibb.co/XxFRQdhz/Whats-App-Image-2025-11-10-at-15-24-14-074babe9.jpg" style="color:var(--accent)">Open</a>` },
+    { date: "2025-11-02", html: `Share your result with us <a href="https://form.svhrt.com/690621a211a1c2ba8ca8e8a0" style="color:var(--accent)">Upload</a>` },
+    { date: "2025-10-31", html: `See Your Result SEM 3 <a href="https://result.wb.gov.in/" style="color:var(--accent)">Open</a>` },
+    { date: "2025-10-29", html: `Result semester 3 Notice <a href="https://i.ibb.co/RpH02hxh/Whats-App-Image-2025-10-29-at-18-36-38-3009d5f2.jpg" style="color:var(--accent)">Open</a>` },
+    { date: "2025-09-01", html: `Class 12 second semester notes uploaded (Physics, Chemistry, Biology).` }
+  ],
+  langBooks: [
+    { title: "Urdu Guide Semester 4", link: "https://drive.google.com/file/d/1wOb9EB5Ek4uoimEnnbdf7fK65sPx8MmH/view?usp=sharing" },
+    { title: "Urdu Guide Semester 2", link: "https://i.ibb.co/XxFRQdhz/Whats-App-Image-2025-11-10-at-15-24-14-074babe9.jpg" },
+    { title: "Urdu Revision Notes - Sem 4", link: "https://i.ibb.co/XxFRQdhz/Whats-App-Image-2025-11-10-at-15-24-14-074babe9.jpg" },
+    { title: "Extra Urdu PDF", link: "https://i.ibb.co/XxFRQdhz/Whats-App-Image-2025-11-10-at-15-24-14-074babe9.jpg" }
+  ],
+  compBooks: [
+    { title: "History - Class 12 Notes", link: "https://drive.google.com/file/d/1wDbEQ8MJzx7UtC60POXG6W-eQTdvcoBU/view?usp=drive_link" },
+    { title: "Geography - Class 12 Notes", link: "https://drive.google.com/file/d/1BkLczTSGEKQ617YA1CEtSuAGVy_FBg8I/view?usp=sharing" },
+    { title: "World History Summary", link: "#" }
+  ],
+  specialBooks: [
+    { title: "The Hidden Principle of Human Nature (PDF)", link: "https://acrobat.adobe.com/id/urn:aaid:sc:AP:ee8cbc22-bb87-4986-a891-06bcc24c2889" }
+  ],
+  contributors: ["Samya Wahid","Naaz fatema", "Isha","Sandeep Yadav",],
+  dataStreams: {
+    science:[
+      {title:"Physics (Class 12) - Notes", link:"#"},
+      {title:"Chemistry - Notes", link:"#"},
+      {title:"Biology - Notes", link:"#"},
+      {title:"Mathematics - Notes", link:"#"}
+    ],
+    arts:[
+      {title:"History - Notes", link:"#"},
+      {title:"Geography - Notes", link:"#"},
+      {title:"Political Science - Notes", link:"#"},
+      {title:"Economics - Notes", link:"#"}
+    ],
+    commerce:[
+      {title:"Accountancy - Notes", link:"#"},
+      {title:"Business Studies - Notes", link:"#"},
+      {title:"Economics - Notes", link:"#"},
+      {title:"Mathematics - Notes", link:"#"}
+    ]
+  }
+};
+
+/* ===== Helpers ===== */
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ===== Render Updates ===== */
+function renderUpdates(){
+  const c = document.getElementById('updatesList');
+  c.innerHTML = '';
+  SITE_DATA.updates.forEach((u, idx)=>{
+    const d = new Date(u.date);
+    const fmt = d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+    const div = document.createElement('div');
+    div.className = 'update scroll-reveal';
+    div.innerHTML = `<div class="time">${fmt}</div><div class="txt">${u.html}</div>`;
+    c.appendChild(div);
+  });
+}
+
+/* ===== Books rendering ===== */
+function loadBooks(arr, id){
+  const container = document.getElementById(id);
+  if(!container) return;
+  container.innerHTML = '';
+  arr.forEach(item=>{
+    const el = document.createElement('div');
+    el.className = 'bookItem scroll-reveal';
+    el.innerHTML = `<div style="display:flex;align-items:center;gap:12px;min-width:0">
+                      <div class="bookIcon">📄</div>
+                      <div style="min-width:0">
+                        <h4 title="${esc(item.title)}">${esc(item.title)}</h4>
+                        <div class="muted" style="font-size:12px;margin-top:6px">Free material</div>
+                      </div>
+                    </div>
+                    <a class="open-btn" href="${item.link}" target="_blank" rel="noopener">Open</a>`;
+    container.appendChild(el);
+  });
+}
+
+/* ===== Subjects (Streams) - reveal-enabled ===== */
+function loadSubjects(streamKey){
+  const area = document.getElementById('subjectsArea');
+  area.innerHTML = '';
+  const arr = SITE_DATA.dataStreams[streamKey] || [];
+  arr.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'subject scroll-reveal';
+    el.innerHTML = `<strong style="color:var(--accent)">${esc(s.title)}</strong><div style="margin-top:6px"><a href="${s.link}" target="_blank" style="color:#cfe8ff;text-decoration:none;font-weight:700">Open / Download</a></div>`;
+    area.appendChild(el);
+  });
+}
+
+/* ===== Contributors render (scroll after >5 via CSS) ===== */
+function renderContributors(){
+  const list = document.getElementById('contributorsList');
+  list.innerHTML = '';
+  SITE_DATA.contributors.forEach((name,i)=>{
+    const row = document.createElement('div');
+    row.className = 'contrib-row scroll-reveal';
+    const bg = i===0 ? 'linear-gradient(180deg,#ffd36b,#ffb400)' : i===1 ? 'linear-gradient(180deg,#cfcfcf,#9fa6b2)' : i===2 ? 'linear-gradient(180deg,#e6a46c,#b87442)' : 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))';
+    row.innerHTML = `<div class="medal" style="background:${bg}">${i+1}</div><div style="font-weight:700">${esc(name)}</div>`;
+    list.appendChild(row);
+  });
+}
+
+/* ===== Scroll reveal (IntersectionObserver) ===== */
+function initScrollReveal(selectors = ['.bookItem', '.update', '.contrib-row', '.subject']) {
+  if (window.__scrollRevealInitialized) return;
+  window.__scrollRevealInitialized = true;
+
+  const rootMargin = '0px 0px -8% 0px';
+  const threshold = 0.12;
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const siblings = Array.from(el.parentElement.querySelectorAll('.scroll-reveal'));
+      const idx = siblings.indexOf(el);
+      const delay = (idx >= 0 ? idx : 0) * 70;
+      el.style.animationDelay = `${delay}ms`;
+      el.classList.add('in-view');
+      obs.unobserve(el);
+    });
+  }, { root: null, rootMargin, threshold });
+
+  // Observe current matches
+  const all = document.querySelectorAll(selectors.join(','));
+  all.forEach(el => {
+    if (!el.classList.contains('scroll-reveal')) el.classList.add('scroll-reveal');
+    observer.observe(el);
+  });
+
+  window.__scrollRevealObserver = observer;
+}
+
+function observeNewContent(containerSelector, selectors = ['.bookItem', '.update', '.contrib-row', '.subject']) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+  const nodes = container.querySelectorAll(selectors.join(','));
+  nodes.forEach(n => {
+    if (!n.classList.contains('scroll-reveal')) n.classList.add('scroll-reveal');
+    if (window.__scrollRevealObserver) window.__scrollRevealObserver.observe(n);
+  });
+}
+
+/* ===== Counters: animate when visible ===== */
+function animateCounter(el, target, duration=900){
+  if(!el) return;
+  const start = 0;
+  let startTime = null;
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+  function frame(ts){
+    if(!startTime) startTime = ts;
+    const progress = Math.min((ts - startTime)/duration, 1);
+    const eased = easeOutCubic(progress);
+    const val = Math.floor(start + (target - start) * eased);
+    el.textContent = val + (target >= 100 ? '+' : '');
+    if(progress < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+function initStatObservers(){
+  const memEl = document.getElementById('memCount');
+  const helpEl = document.getElementById('helpCount');
+  const resEl = document.getElementById('resourcesCount');
+  const options = { root: null, rootMargin: "0px", threshold: 0.3 };
+  const obs = new IntersectionObserver((entries, o)=>{
+    entries.forEach(ent=>{
+      if(ent.isIntersecting){
+        animateCounter(memEl, SITE_DATA.stats.members, 900);
+        animateCounter(helpEl, SITE_DATA.stats.helped, 900);
+        animateCounter(resEl, SITE_DATA.stats.resources, 900);
+        o.disconnect();
+      }
+    });
+  }, options);
+  obs.observe(memEl);
+}
+
+/* ===== Tab indicator (books) ===== */
+function updateTabIndicator(){
+  const tabs = document.querySelector('.tabs-inner');
+  const indicator = document.querySelector('.tab-underline');
+  if(!tabs || !indicator) return;
+  const active = tabs.querySelector('.tabBtn.active') || tabs.querySelector('.tabBtn');
+  if(!active){ indicator.style.width = '0'; return; }
+  const left = active.offsetLeft;
+  const width = active.offsetWidth;
+  indicator.style.width = width + 'px';
+  indicator.style.transform = `translateX(${left}px)`;
+}
+function showBookSection(id){
+  document.querySelectorAll('.bookSection').forEach(s=>{
+    s.style.display = s.id === id ? 'block' : 'none';
+  });
+  document.querySelectorAll('.tabs-inner .tabBtn').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-target') === id);
+    b.setAttribute('aria-selected', b.classList.contains('active') ? 'true' : 'false');
+  });
+  setTimeout(()=> {
+    updateTabIndicator();
+    observeNewContent('#' + id, ['.bookItem']);
+  }, 60);
+}
+
+/* ===== Streams (small tabs) handled separately ===== */
+function initStreams(){
+  document.getElementById('tabs')?.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    loadSubjects(btn.getAttribute('data-stream'));
+    // observe subjects for reveal
+    setTimeout(()=> observeNewContent('#subjectsArea', ['.subject']), 60);
+  });
+}
+
+/* ===== Mobile hamburger toggle & page nav highlight ===== */
+function initHamburger(){
+  const btn = document.getElementById('hambBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  btn.addEventListener('click', ()=>{
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    if(open){ mobileNav.style.display = 'none'; } else { mobileNav.style.display = 'block'; }
+  });
+}
+
+function initPageNav(){
+  const links = Array.from(document.querySelectorAll('.nav-link'));
+  const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  window.addEventListener('scroll', ()=>{
+    let current = sections[0];
+    const offset = 140;
+    sections.forEach(sec => { if(sec.getBoundingClientRect().top - offset <= 0) current = sec; });
+    if(current) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current.id));
+  }, {passive:true});
+
+  document.querySelectorAll('.nav a, #mobileNav a').forEach(a=>{
+    a.addEventListener('click', ()=> {
+      document.querySelectorAll('.nav a').forEach(n=>n.classList.remove('active'));
+      a.classList.add('active');
+      // hide mobile nav on click
+      const mobileNav = document.getElementById('mobileNav');
+      if(mobileNav) mobileNav.style.display = 'none';
+      const btn = document.getElementById('hambBtn');
+      if(btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+/* ===== Top notice: dismiss handling ===== */
+(function initTopNotice(){
+  const key = 'wb_top_notice_closed_v1';
+  const topNotice = document.getElementById('topNotice');
+  const closeBtn = document.getElementById('noticeClose');
+  const waLink = document.getElementById('noticeWA');
+  if(localStorage.getItem(key) === '1'){ topNotice.style.display = 'none'; }
+  closeBtn.addEventListener('click', () => {
+    topNotice.style.transition = 'opacity .28s ease';
+    topNotice.style.opacity = 0;
+    setTimeout(()=> topNotice.style.display = 'none', 300);
+    try { localStorage.setItem(key, '1'); } catch(e){}
+  });
+  waLink.addEventListener('click', () => {
+    try { localStorage.setItem(key, '1'); } catch(e){}
+    setTimeout(()=> { topNotice.style.display = 'none'; }, 400);
+  });
+})();
+
+/* ===== Init after load ===== */
+window.addEventListener('load', ()=>{
+  renderUpdates();
+  loadBooks(SITE_DATA.langBooks, 'langBooks');
+  loadBooks(SITE_DATA.compBooks, 'compBooks');
+  loadBooks(SITE_DATA.specialBooks, 'specialBooks');
+  renderContributors();
+  loadSubjects('science');
+
+  // UI init
+  document.querySelectorAll('.tabs-inner .tabBtn').forEach((b, idx, arr)=>{
+    b.addEventListener('click', ()=> showBookSection(b.getAttribute('data-target')));
+    b.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowRight') arr[(idx+1)%arr.length].focus();
+      if(e.key === 'ArrowLeft') arr[(idx-1+arr.length)%arr.length].focus();
+      if(e.key === 'Enter' || e.key === ' ') showBookSection(b.getAttribute('data-target'));
+    });
+  });
+  showBookSection('langBooks');
+  updateTabIndicator();
+  window.addEventListener('resize', ()=> setTimeout(updateTabIndicator, 80));
+
+  initStreams();
+  initStatObservers();
+  initHamburger();
+  initPageNav();
+
+  // populate sidebar counts quickly (mirror)
+  document.getElementById('memberCount').textContent = SITE_DATA.stats.members + '+';
+  document.getElementById('helpCountSidebar').textContent = SITE_DATA.stats.helped + '+';
+  document.getElementById('pdfCount').textContent = SITE_DATA.stats.resources + '+';
+
+  // init reveal observer
+  initScrollReveal();
+  // ensure new lists are observed
+  observeNewContent('#langBooks');
+  observeNewContent('#compBooks');
+  observeNewContent('#specialBooks');
+  observeNewContent('#updatesList');
+  observeNewContent('#contributorsList');
+  observeNewContent('#subjectsArea');
+});
+
+/* ===== Optional admin helper: addBook('lang'|'comp'|'special','Title','link') ===== */
+function addBook(section, title, link){
+  if(section === 'lang') SITE_DATA.langBooks.unshift({title,link});
+  if(section === 'comp') SITE_DATA.compBooks.unshift({title,link});
+  if(section === 'special') SITE_DATA.specialBooks.unshift({title,link});
+  loadBooks(SITE_DATA.langBooks, 'langBooks');
+  loadBooks(SITE_DATA.compBooks, 'compBooks');
+  loadBooks(SITE_DATA.specialBooks, 'specialBooks');
+  // observe newly added content
+  setTimeout(()=> observeNewContent('#' + (section==='lang' ? 'langBooks' : section==='comp' ? 'compBooks' : 'specialBooks')), 60);
+}
+</script>
+</body>
+</html>
+
+
