@@ -318,29 +318,115 @@
   }
 </style>
 
-<div class="wb-countdown-wrap" aria-live="polite" aria-atomic="true">
-  <div class="wb-count-card" role="region" aria-label="Countdown to 4th semester examination">
-    <div class="wb-count-left">
-      <div class="wb-count-title">4th Semester Examination</div>
-      <div class="wb-count-sub">Counting down — Days · Hours · Minutes · Seconds</div>
-      <div class="wb-accent-bar" aria-hidden="true"></div>
+<!-- ===== Touch-friendly Simple Scale Countdown Card (3D removed) ===== -->
+<style>
+  /* container */
+  .wb-card-wrap{ width:100%; display:flex; justify-content:center; margin:14px 0; }
+  .wb-card{
+    width:100%; max-width:980px; border-radius:14px; padding:16px 18px;
+    background: linear-gradient(180deg, rgba(6,11,20,0.55), rgba(8,14,28,0.36));
+    border:1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 14px 40px rgba(2,8,30,0.45);
+    color:#e8fbff; display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+    transition: transform 260ms cubic-bezier(.2,.9,.3,1), box-shadow 260ms cubic-bezier(.2,.9,.3,1);
+    will-change: transform;
+  }
+
+  /* optional subtle background image (local file path) */
+  .wb-card::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    pointer-events: none;
+    background-image: url("sandbox:/mnt/data/Screenshot 2025-11-21 140334.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.06; /* very subtle */
+    mix-blend-mode: screen;
+    z-index:0;
+  }
+  .wb-card > * { position: relative; z-index:1; }
+
+  /* hover (desktop) */
+  .wb-card:hover{
+    transform: scale(1.035);
+    box-shadow: 0 28px 80px rgba(2,8,30,0.7);
+  }
+
+  /* pressed (touch) class applied via JS */
+  .wb-card.pressed{
+    transform: scale(1.045) !important;
+    box-shadow: 0 34px 110px rgba(2,8,30,0.78) !important;
+  }
+
+  .wb-left{ flex:1 1 300px; min-width:0; }
+  .wb-title{ font-weight:800; color:var(--accent); font-size:1.02rem; margin-bottom:6px; }
+  .wb-timers{ display:flex; gap:12px; align-items:center; justify-content:flex-end; flex:0 0 auto; }
+  .wb-seg{
+    min-width:76px; padding:12px 14px; border-radius:12px; text-align:center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
+    border:1px solid rgba(0,255,255,0.03);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  }
+  .wb-num{ font-size:22px; font-weight:800; color:#00e5ff; text-shadow:0 0 8px rgba(0,229,255,0.18); }
+  .wb-label{ font-size:11px; color:rgba(230,238,248,0.78); letter-spacing:1px; text-transform:uppercase; margin-top:6px; }
+
+  /* shimmer */
+  .shimmer{
+    background: linear-gradient(90deg, #141820 0%, #222a3b 50%, #141820 100%);
+    background-size:200% 100%;
+    animation: shimmerAnim 1.4s infinite linear;
+    border-radius:6px;
+    display:inline-block;
+    width:100%;
+    height:1.12em;
+  }
+  @keyframes shimmerAnim{ 0%{ background-position:-200% 0 } 100%{ background-position:200% 0 } }
+
+  /* keyboard focus */
+  .wb-card:focus-visible{
+    outline: 3px solid rgba(0,229,255,0.12);
+    outline-offset: 6px;
+    border-radius:14px;
+    transform: scale(1.035);
+  }
+
+  /* responsive */
+  @media(max-width:720px){
+    .wb-timers{ width:100%; justify-content:space-between; }
+    .wb-seg{ min-width:68px; flex:1; }
+    .wb-left{ order:2; width:100%; }
+  }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    .wb-card, .wb-seg, .shimmer { transition: none !important; animation: none !important; transform: none !important; }
+  }
+</style>
+
+<div class="wb-card-wrap">
+  <div class="wb-card" id="wbCard" tabindex="0" role="region" aria-label="Countdown to 4th semester examination">
+    <div class="wb-left">
+      <div class="wb-title">4th Semester Examination</div>
+      <!-- clean — no debug text -->
     </div>
 
-    <div class="wb-count-timers" role="group" aria-label="Time remaining">
-      <div class="wb-seg" aria-hidden="false">
-        <div class="wb-num" id="wb-cd-days">--</div>
+    <div class="wb-timers" aria-hidden="false">
+      <div class="wb-seg">
+        <div class="wb-num shimmer" id="wb-days">--</div>
         <div class="wb-label">Days</div>
       </div>
-      <div class="wb-seg" aria-hidden="false">
-        <div class="wb-num" id="wb-cd-hours">--</div>
+      <div class="wb-seg">
+        <div class="wb-num shimmer" id="wb-hours">--</div>
         <div class="wb-label">Hours</div>
       </div>
-      <div class="wb-seg" aria-hidden="false">
-        <div class="wb-num" id="wb-cd-mins">--</div>
+      <div class="wb-seg">
+        <div class="wb-num shimmer" id="wb-mins">--</div>
         <div class="wb-label">Minutes</div>
       </div>
-      <div class="wb-seg" aria-hidden="false">
-        <div class="wb-num" id="wb-cd-secs">--</div>
+      <div class="wb-seg">
+        <div class="wb-num shimmer" id="wb-secs">--</div>
         <div class="wb-label">Seconds</div>
       </div>
     </div>
@@ -349,77 +435,71 @@
 
 <script>
 (function(){
-  // Only log to console — NO visible debug text.
-  function dbgConsole(msg){ try{ console.log('[wb-countdown]', msg); } catch(e){} }
+  const card = document.getElementById('wbCard');
+  const dEl = document.getElementById('wb-days');
+  const hEl = document.getElementById('wb-hours');
+  const mEl = document.getElementById('wb-mins');
+  const sEl = document.getElementById('wb-secs');
 
-  function updateDisplay(now){
-    const target = new Date("2026-02-12T00:00:00+05:30"); // 12 Feb 2026 00:00 IST
-    const diff = target.getTime() - now.getTime();
+  const target = new Date("2026-02-12T00:00:00+05:30").getTime();
 
+  function update(now){
+    const nowMs = (now instanceof Date) ? now.getTime() : Date.now();
+    let diff = target - nowMs;
     if(diff <= 0){
-      document.getElementById('wb-cd-days').innerText = '0';
-      document.getElementById('wb-cd-hours').innerText = '00';
-      document.getElementById('wb-cd-mins').innerText = '00';
-      document.getElementById('wb-cd-secs').innerText = '00';
-      dbgConsole('Exam Day!');
+      dEl.textContent='00'; hEl.textContent='00'; mEl.textContent='00'; sEl.textContent='00';
+      removeShimmer();
       return;
     }
+    const days = Math.floor(diff / (24*60*60*1000)); diff %= (24*60*60*1000);
+    const hours = Math.floor(diff / (60*60*1000)); diff %= (60*60*1000);
+    const mins = Math.floor(diff / (60*1000)); diff %= (60*1000);
+    const secs = Math.floor(diff / 1000);
 
-    let r = diff;
-    const days = Math.floor(r / (24*60*60*1000)); r -= days * (24*60*60*1000);
-    const hours = Math.floor(r / (60*60*1000)); r -= hours * (60*60*1000);
-    const mins = Math.floor(r / (60*1000)); r -= mins * (60*1000);
-    const secs = Math.floor(r / 1000);
+    dEl.textContent = String(days).padStart(2,'0');
+    hEl.textContent = String(hours).padStart(2,'0');
+    mEl.textContent = String(mins).padStart(2,'0');
+    sEl.textContent = String(secs).padStart(2,'0');
 
-    document.getElementById('wb-cd-days').innerText = String(days).padStart(2,'0');
-    document.getElementById('wb-cd-hours').innerText = String(hours).padStart(2,'0');
-    document.getElementById('wb-cd-mins').innerText = String(mins).padStart(2,'0');
-    document.getElementById('wb-cd-secs').innerText = String(secs).padStart(2,'0');
-
-    dbgConsole(`Now: ${now.toLocaleString()}  | Target: ${target.toLocaleString()}`);
+    removeShimmer();
   }
 
-  async function fetchTimeFromApis(){
-    const apis = [
-      { url: "https://worldtimeapi.org/api/timezone/Asia/Kolkata", extractor: d => d.datetime },
-      { url: "https://timeapi.io/api/Time/current/zone?timeZone=Asia/Kolkata", extractor: d => d.dateTime || d.currentLocalTime || d.dateTimeString },
-      { url: "https://worldclockapi.com/api/json/utc/now", extractor: d => d.currentDateTime }
-    ];
-    for(const api of apis){
-      try{
-        dbgConsole('Trying: ' + api.url);
-        const res = await fetch(api.url, { cache: 'no-store' });
-        if(!res.ok){ dbgConsole(`Status ${res.status} from ${api.url}`); continue; }
-        const json = await res.json();
-        const val = api.extractor(json);
-        if(!val){ dbgConsole('No datetime in response from ' + api.url); continue; }
-        const parsed = new Date(val);
-        if(isNaN(parsed.getTime())){ dbgConsole('Parsed invalid date from ' + api.url + ': ' + val); continue; }
-        dbgConsole('Got valid date from ' + api.url + ': ' + parsed.toString());
-        return parsed;
-      }catch(err){
-        dbgConsole('Error fetching ' + api.url + ': ' + (err && err.message));
-      }
-    }
-    return null;
+  function removeShimmer(){
+    [dEl,hEl,mEl,sEl].forEach(e => e.classList.remove('shimmer'));
   }
 
-  (async function init(){
-    const internetNow = await fetchTimeFromApis();
-    if(internetNow){
-      const baselineMs = internetNow.getTime();
-      const clientStart = Date.now();
-      updateDisplay(new Date(baselineMs + (Date.now() - clientStart)));
-      setInterval(()=> updateDisplay(new Date(baselineMs + (Date.now() - clientStart))), 1000);
-      return;
-    }
-    dbgConsole('Could not fetch internet time. Using local clock as fallback.');
-    updateDisplay(new Date());
-    setInterval(()=> updateDisplay(new Date()), 1000);
-  })();
+  // initial tick + interval
+  update(new Date());
+  setInterval(()=> update(new Date()), 1000);
+
+  /* Touch interactions: simple press-to-scale */
+  let touchActive = false;
+  function onTouchStart(e){
+    touchActive = true;
+    card.classList.add('pressed');
+  }
+  function onTouchEnd(e){
+    touchActive = false;
+    card.classList.remove('pressed');
+  }
+
+  card.addEventListener('touchstart', onTouchStart, {passive:true});
+  card.addEventListener('touchend', onTouchEnd, {passive:true});
+  card.addEventListener('touchcancel', onTouchEnd, {passive:true});
+
+  // Also support mouse press (mousedown/up) as small feedback
+  card.addEventListener('mousedown', ()=> card.classList.add('pressed'));
+  window.addEventListener('mouseup', ()=> card.classList.remove('pressed'));
+
+  // Cleanup for reduced-motion users
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    card.removeEventListener('touchstart', onTouchStart);
+    card.removeEventListener('touchend', onTouchEnd);
+  }
 })();
 </script>
-<!-- ===== End Clean countdown block ===== -->
+<!-- ===== End touch-friendly scale countdown ===== -->
+
 
 
       
